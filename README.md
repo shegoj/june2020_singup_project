@@ -1,27 +1,14 @@
-# eb-py-flask-signup
-This Python sample application uses the [Flask](http://flask.pocoo.org/) framework and [Bootstrap](http://getbootstrap.com/) to build a simple, scalable customer signup form that is deployed to [AWS Elastic Beanstalk](http://aws.amazon.com/elasticbeanstalk/). The application stores data in [Amazon DynamoDB](http://aws.amazon.com/dynamodb/) and publishes notifications to the [Amazon Simple Notification Service (SNS)](http://aws.amazon.com/sns/) when a customer fills out the form.
+# Devops project 
+## deployment steps
 
-## Instructional Videos
-This app includes a quick 3-part video series on YouTube that will walk you through deploying, using, and customizing the application in 10 minutes or less.
+yum update -y
+yum install python-pip
+pip install flask
 
-1. [Part 1: http://youtu.be/rsg4YI4mljg](http://youtu.be/rsg4YI4mljg)
-2. [Part 2: http://youtu.be/IuwfVX52PV8](http://youtu.be/IuwfVX52PV8)
-3. [Part 3: http://youtu.be/DrRr-JgdgzE](http://youtu.be/DrRr-JgdgzE)
+Git clone https://github.com/shegoj/june2020_singup_project.git code 
+cd code
+pip install -r requirements.txt 
+export AWS_ACCESS_KEY_ID=A
+export AWS_SECRET_ACCESS_KEY=w
+FLASK_APP=application.py AWS_REGION=eu-xxxx-1 STARTUP_SIGNUP_TABLE=dynamo_db NEW_SIGNUP_TOPIC=arn:aws:sns:eu-west-1:xxxxxxxx:sxxxxxxxxx flask run --host 0.0.0.0
 
-## Features
-
-### Themes
-The code includes several Bootstrap themes from [bootswatch.com](http://bootswatch.com/). You can dynamically change the active theme by setting the THEME environment variable in the [Elastic Beanstalk Management Console](https://console.aws.amazon.com/elasticbeanstalk):
-
-![](misc/theme-flow.png)
-
-Installed themes include:
-
-* [amelia](http://bootswatch.com/amelia)
-* [default](http://bootswatch.com/default)
-* [flatly](http://bootswatch.com/flatly)
-* [slate](http://bootswatch.com/slate)
-* [united](http://bootswatch.com/united)
-
-### Flask Debugging
-Similar to themes, you can control Flask debugging by toggling the FLASK_DEBUG env var from the [Elastic Beanstalk Management Console](https://console.aws.amazon.com/elasticbeanstalk).
